@@ -13,7 +13,7 @@ diamond to look inside; Shift+click opens it fully.
   you ask for more.
 - **Two layouts.** A compact lane graph, or a revision graph with one column per branch and a box for each commit.
 - **Filter sets.** Save which branches, authors and paths you want to see, privately or shared with the team in
-  `.gitgraph/`.
+  `.gitfacet/`.
 - **Rewrite history with a preview.** Reorder, squash and drop commits in the graph; Apply runs one `git rebase -i`,
   and Undo takes it back.
 - **Everyday Git in place.** Checkout with automatic stash, drag a branch to move it, cherry-pick, merge, push, tags
@@ -32,7 +32,9 @@ diamond to look inside; Shift+click opens it fully.
 **Revision Graph** / **Compact Graph** in the title bar switches the layout. In the revision graph each branch has
 its own column, and arrows point from a commit to the newer one.
 
-![Compact graph and revision graph side by side](images/layouts.png)
+![Compact graph](images/layouts_compact.png)
+
+![Revision graph with one column per branch](images/layouts_revisiongraph.png)
 
 ### Rewrite history with a preview
 
@@ -46,7 +48,7 @@ yellow frame until you choose **Apply History Rewrite**.
 Keep views such as "my branches since the release" or "only `src/core`" as filter sets. The status bar shows which
 one is loaded, with ● when the graph differs from it.
 
-![Filter sets and the branch picker](images/filtersets.png)
+![Switching between shared filter sets](images/filters.gif)
 
 ### Compare and diff
 

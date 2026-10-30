@@ -66,9 +66,9 @@ All features, settings and keys of Git Facet in detail. For an overview, see the
   remotes that lack it (once per session; **No** is remembered for the repository), and the command **Git Facet:
   Push and Fetch Notes (Set Up Git)** does it any time. It adds `refs/notes/*` to `remote.<name>.push` (with `HEAD`
   before it if there were no push refspecs, so `git push` still pushes the current branch) and
-  `+refs/notes/*:refs/git-graph/remote-notes/<name>/*` to `remote.<name>.fetch`. After each fetch from the graph,
+  `+refs/notes/*:refs/git-facet/remote-notes/<name>/*` to `remote.<name>.fetch`. After each fetch from the graph,
   the local notes are fast-forwarded to the fetched ones, or merged with them if both sides changed (a note changed
-  on both sides keeps the lines of both). A plain `git fetch` only brings them under `refs/git-graph/remote-notes/`.
+  on both sides keeps the lines of both). A plain `git fetch` only brings them under `refs/git-facet/remote-notes/`.
   **Push to Remote** on a branch pushes them along to a remote set up this way, and
   **Push Notes to Remote** in the **…** menu pushes them on their own; **Push Note to Remote** on a note symbol
   pushes its category (git pushes notes per category, not one by one). A note the remote has in the same version
@@ -93,7 +93,8 @@ All features, settings and keys of Git Facet in detail. For an overview, see the
   discard unstaged changes per file or all at once, after a confirmation (untracked files are deleted); with two nodes selected, a commit is compared with the index or the
   working tree. Turn them off with `gitFacet.showUncommitted` or per filter set.
 - **Filter sets:** Edit the filter set of the graph and save it in **Graph: Filter Sets** for yourself, privately
-  for the repository (`.git/gitgraph/filtersets.json`) or shared with the team (`.gitgraph/filtersets.json`). The
+  for the repository (`.git/gitfacet/filtersets.json`) or shared with the team (`.gitfacet/filtersets.json`;
+  a `.gitgraph/filtersets.json` from before the rename applies until you move it, which the graph offers). The
   title and the status bar show the loaded filter set, with ● when the graph differs from it (in the panel at the
   bottom only the status bar; click it to load another). Save writes back to the loaded filter
   set (asking first, except in the shared file, which is versioned); Save As picks a place and a name. Loading more
@@ -102,7 +103,7 @@ All features, settings and keys of Git Facet in detail. For an overview, see the
   `feature/*`, `v1.*` or `refs/remotes/origin/*`); full patterns such as `refs/remotes/origin/*` go under other refs.
   Which characters split names for the suggestions is set in `gitFacet.patternSeparators.branches` (default `/`) and
   `gitFacet.patternSeparators.tags` (default `.`), or per filter set.
-- **Commit:** On *Staged changes* (on *Unstaged changes* while nothing is staged), add or edit the commit message (kept in `.git/gitgraph/COMMIT_MSG` and in the
+- **Commit:** On *Staged changes* (on *Unstaged changes* while nothing is staged), add or edit the commit message (kept in `.git/gitfacet/COMMIT_MSG` and in the
   Source Control input box; the node shows its first line, the tooltip all of it, and checking out keeps
   it with the stash until you come back) and commit; without a message, the editor opens first and saving commits. While nothing is staged,
   Shift+right-click on *Unstaged changes* offers **Commit All Unstaged Changes** (stage everything, then commit). On HEAD,
@@ -129,7 +130,7 @@ All features, settings and keys of Git Facet in detail. For an overview, see the
   Tags to Remote** in the title bar push tags the same way, without force: a tag of the same name on another commit
   in the remote is rejected; Shift+right-click on a tag offers **Force Push Tag to Remote**, which replaces it. A pushed tag
   shows a cloud like a branch; after each fetch from the graph and after pushing or deleting a tag, the graph also
-  fetches the remote's tags into `refs/git-graph/remote-tags/<remote>/`, so a push made elsewhere shows after the
+  fetches the remote's tags into `refs/git-facet/remote-tags/<remote>/`, so a push made elsewhere shows after the
   next fetch. **Delete Tag on Remote …** on
   the cloud deletes the tag on the remote and keeps the local one; **Delete Branch on Remote …** on a remote branch
   deletes the branch there and keeps local branches. The push runs through the built-in Git extension,
