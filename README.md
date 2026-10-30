@@ -57,7 +57,7 @@ opens beside the graph and follows your selection.
 
 ## Most used keys
 
-Click into the graph first; all keys can be changed under **Keyboard Shortcuts** (search for `gitGraph`).
+Click into the graph first; all keys can be changed under **Keyboard Shortcuts** (search for `gitFacet`).
 
 | Key | Action |
 | --- | --- |
@@ -65,6 +65,8 @@ Click into the graph first; all keys can be changed under **Keyboard Shortcuts**
 | → / ← | Expand / collapse a condensed chain |
 | Enter | Focus the changed files |
 | C | Check out the branch, with stash and unstash |
+| N / Ctrl+Enter on *Staged changes* | Write the commit message / commit |
+| A on *Unstaged changes* / U on *Staged changes* | Stage all / unstage all |
 | B / T | Create a branch / a tag |
 | K / R / M | Cherry-pick / revert / merge into HEAD |
 | Alt+M | Mark a branch for a move / move it here |

@@ -6,19 +6,19 @@ All features, settings and keys of Git Facet in detail. For an overview, see the
   also available as the **Git Facet** view in the panel (drag it to the side bar if you like); choose its repository
   and filter set in its title bar. The title bar shows **Edit Filter Set**, **Condense**, **Fetch** and **Go to HEAD**;
   filter sets, view toggles, resets and the rest are in its **…** menu; there, **First Parent Only** / **Show All
-  Parents** and **Show Stashes** / **Hide Stashes** name what the entry does, as VS Code shows no check marks for extensions. Font sizes: settings `gitGraph.fontSize` and `gitGraph.viewFontSize`.
+  Parents** and **Show Stashes** / **Hide Stashes** name what the entry does, as VS Code shows no check marks for extensions. Font sizes: settings `gitFacet.fontSize` and `gitFacet.viewFontSize`.
   **Open Graph for This File or Folder** in the explorer context menu opens a graph limited to that path, with the
   filters of the last active graph of the repository.
-- **Condense:** Linear chains are condensed into one node each from the start; **Stop Condensing** / **Condense** in the title bar (Q) turns this off and on. Expand a chain from its context menu or by clicking its diamond, a few commits per step (`gitGraph.squashKeep`, default 3) or fully (Shift+click).
+- **Condense:** Linear chains are condensed into one node each from the start; **Stop Condensing** / **Condense** in the title bar (Q) turns this off and on. Expand a chain from its context menu or by clicking its diamond, a few commits per step (`gitFacet.squashKeep`, default 3) or fully (Shift+click).
   Only the first parent of each merge is followed from the start; **Show All Parents** in the **…** menu shows the
   merged branches too, or use **Expand Merged Branch** on a single merge.
 - **Revision graph:** **Revision Graph** / **Compact Graph** in the title bar, next to **Go to HEAD**, switches the
-  layout of the filter set; `gitGraph.layout` sets the default. In the revision graph, commits
+  layout of the filter set; `gitFacet.layout` sets the default. In the revision graph, commits
   are boxes with short ID, tags, date and message, and each branch has a column with its name on its newest box;
-  branches that do not overlap in time share a column (`gitGraph.revisionShareColumns`). Arrows point to the newer
+  branches that do not overlap in time share a column (`gitFacet.revisionShareColumns`). Arrows point to the newer
   commit, from the fork into the branch and dashed from a merged branch into its merge. Condensed commits become a
-  diamond with their count, merge commits too (`gitGraph.revisionCondenseMerges`); click a diamond to expand a few commits,
-  Shift+click to expand it fully. Box width in characters: `gitGraph.revisionColumnWidth` (default 20); long messages wrap to 3 lines or are cut (`gitGraph.revisionSubjectOverflow`).
+  diamond with their count, merge commits too (`gitFacet.revisionCondenseMerges`); click a diamond to expand a few commits,
+  Shift+click to expand it fully. Box width in characters: `gitFacet.revisionColumnWidth` (default 20); long messages wrap to 3 lines or are cut (`gitFacet.revisionSubjectOverflow`).
   Stashes and the staged and unstaged changes take no place in the grid: stashes hang as small dashed circles with
   their number at the top right of their commit's box, staged and unstaged changes as small ovals at its top left.
 - **Hide and prioritize:** Hide refs or commits and move a branch to the front from the context menu; hidden
@@ -27,8 +27,8 @@ All features, settings and keys of Git Facet in detail. For an overview, see the
   patterns, local and remote branches and tags with a check mark for what is shown: uncheck to hide, check to show
   again (a branch under a hidden pattern becomes an exception), check a branch that is not loaded to add it. Type a
   pattern such as `release/*` to add it as an entry of its own.
-- **Defaults:** `gitGraph.branchOrder` (base order of branch priority), `gitGraph.defaultMinLength` (shortest chain
-  that is condensed), `gitGraph.defaultIncludeRemotes` (load remote branches) and `gitGraph.defaultDiffFiles` (with a
+- **Defaults:** `gitFacet.branchOrder` (base order of branch priority), `gitFacet.defaultMinLength` (shortest chain
+  that is condensed), `gitFacet.defaultIncludeRemotes` (load remote branches) and `gitFacet.defaultDiffFiles` (with a
   path filter, all files or only the matching ones) apply wherever the filter set leaves the value open.
 - **Filter from the context menu:** On a commit, the **Filter** submenu offers **Hide Author**, **Only This Author**, **Hide Similar Subjects…**
   (suggests a pattern such as `^chore:` from the subject), **Show from Here** / **Show up to Here** (its commit date)
@@ -39,7 +39,7 @@ All features, settings and keys of Git Facet in detail. For an overview, see the
 - **Row layout:** Choose which fields stand left of the graph and right of the node, in which order (short ID,
   branches, tags, notes, subject, author, date), and whether tags and branches get a line above the commit message,
   and a maximum name length left of the graph: longer names go into a line above and reach across the graph (setting
-  `gitGraph.rowLayout`, per graph with **Choose Row Layout**, remembered per repository for the editor and the
+  `gitFacet.rowLayout`, per graph with **Choose Row Layout**, remembered per repository for the editor and the
   panel). **Choose Row Layout** opens the layout as JSON next to a demo graph that shows every kind of field; each
   valid change applies at once to the demo and to the graph, and saving (Ctrl+S) makes it the default for new graphs.
   The context menu of a field in the demo graph moves it to the other side, hides it, or puts tags and branches in
@@ -61,7 +61,7 @@ All features, settings and keys of Git Facet in detail. For an overview, see the
 - **Notes:** Commits with git notes show a small note symbol per category (N for Notes, `refs/notes/commits`; R
   for `reviews`, C for `ci`); the tooltip shows the text. Add, edit or delete a note from the context menu, also
   on a note symbol: the note opens in an editor, and saving replaces it. Further categories with name and letter
-  are set per repository in `gitGraph.noteCategories`; which categories are shown is part of the filter set.
+  are set per repository in `gitFacet.noteCategories`; which categories are shown is part of the filter set.
   Git does not push and fetch notes by default: after adding a note, the graph offers to set this up for the
   remotes that lack it (once per session; **No** is remembered for the repository), and the command **Git Facet:
   Push and Fetch Notes (Set Up Git)** does it any time. It adds `refs/notes/*` to `remote.<name>.push` (with `HEAD`
@@ -80,7 +80,7 @@ All features, settings and keys of Git Facet in detail. For an overview, see the
   open the file at that revision or in the working tree. **Select for Compare** and **Compare with Selected** in
   the context menu of a file take its version before or after the change and combine with the explorer's commands
   of the same name, e.g. the old `a.txt` of a commit against `b.txt` in the working tree. A file diff opens beside the graph in an editor tab and in
-  the active editor group for the view in the panel (settings `gitGraph.diffColumn` and `gitGraph.viewDiffColumn`).
+  the active editor group for the view in the panel (settings `gitFacet.diffColumn` and `gitFacet.viewDiffColumn`).
   The file diff opened last follows the selection in the graph and shows the same file for the newly selected
   commit, marked *unchanged* if the commit does not change it; turn this off with the button in its title bar or
   by pinning the tab.
@@ -91,7 +91,7 @@ All features, settings and keys of Git Facet in detail. For an overview, see the
   files in **Graph: Changed Files** (several at once with Ctrl/Shift+click; a file with both staged and unstaged
   changes is not stashed); stage or unstage all of them from the node's context menu or the list's title bar;
   discard unstaged changes per file or all at once, after a confirmation (untracked files are deleted); with two nodes selected, a commit is compared with the index or the
-  working tree. Turn them off with `gitGraph.showUncommitted` or per filter set.
+  working tree. Turn them off with `gitFacet.showUncommitted` or per filter set.
 - **Filter sets:** Edit the filter set of the graph and save it in **Graph: Filter Sets** for yourself, privately
   for the repository (`.git/gitgraph/filtersets.json`) or shared with the team (`.gitgraph/filtersets.json`). The
   title and the status bar show the loaded filter set, with ● when the graph differs from it (in the panel at the
@@ -100,8 +100,8 @@ All features, settings and keys of Git Facet in detail. For an overview, see the
   commits is not saved. In
   the editor, enter branches and tags by name (or choose them from the repository, with suggested patterns such as
   `feature/*`, `v1.*` or `refs/remotes/origin/*`); full patterns such as `refs/remotes/origin/*` go under other refs.
-  Which characters split names for the suggestions is set in `gitGraph.patternSeparators.branches` (default `/`) and
-  `gitGraph.patternSeparators.tags` (default `.`), or per filter set.
+  Which characters split names for the suggestions is set in `gitFacet.patternSeparators.branches` (default `/`) and
+  `gitFacet.patternSeparators.tags` (default `.`), or per filter set.
 - **Commit:** On *Staged changes* (on *Unstaged changes* while nothing is staged), add or edit the commit message (kept in `.git/gitgraph/COMMIT_MSG` and in the
   Source Control input box; the node shows its first line, the tooltip all of it, and checking out keeps
   it with the stash until you come back) and commit; without a message, the editor opens first and saving commits. While nothing is staged,
@@ -109,7 +109,7 @@ All features, settings and keys of Git Facet in detail. For an overview, see the
   **Undo Last Commit** turns the last commit back into staged changes, with its message.
 - **Tags:** **Create Tag Here…** (T) asks for a name and a message (empty: lightweight tag); the pencil at the top
   right opens a long message in an editor, with the name in the first line; saving creates the tag.
-  **Create Tag from CHANGELOG Here…** fills that editor from the changelog in the commit (`gitGraph.changelogPath`,
+  **Create Tag from CHANGELOG Here…** fills that editor from the changelog in the commit (`gitFacet.changelogPath`,
   default `CHANGELOG.md`): the topmost section `## <version> …` not yet tagged, e.g. `v0.11.3` with the message
   `Version 0.11.3`, headings such as `### Added` as `Added:`; sections without a version such as "Unreleased" are skipped.
 - **Move a branch:** Drag a local branch onto another commit, or mark it with **Mark Branch for Move** (Alt+M),
@@ -149,7 +149,7 @@ All features, settings and keys of Git Facet in detail. For an overview, see the
   the steps and offers **Undo Last Step** (Ctrl+Z), **Discard** and **Apply History Rewrite**, which asks once and
   then runs a single `git rebase -i`; a message afterwards offers **Undo**. Uncommitted changes are set aside and come
   back. Commits that are already pushed can only be rewritten on branches from the setting
-  `gitGraph.rewritableBranches` (e.g. `wip/me/*`); merges in the range and other local branches with commits in it
+  `gitFacet.rewritableBranches` (e.g. `wip/me/*`); merges in the range and other local branches with commits in it
   prevent the rewrite. On conflicts the rebase stops; the message offers **Continue** and **Abort**, the preview with
   its yellow frame stays, and the bar offers **Abort** and **Continue Rebase** until the rebase is done. Once the
   conflicts are resolved and staged, **Continue Rebase** there, on the node of the changes or in the title bar of the
@@ -184,7 +184,7 @@ All features, settings and keys of Git Facet in detail. For an overview, see the
 ## Keyboard
 
 Click into the graph, then select with the keyboard; commands act on the selected node. The keys apply while the
-graph has the focus and not its find bar; change them under **Keyboard Shortcuts** (search for `gitGraph`).
+graph has the focus and not its find bar; change them under **Keyboard Shortcuts** (search for `gitFacet`).
 
 | Key | Action |
 | --- | --- |
